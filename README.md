@@ -1,8 +1,37 @@
+# Lancer le projet
+
+## Dev
+
+Aller a la racine du projet, lancer :
+```bash
+docker compose -f docker-compose-dev.yaml up
+```
+
+Lancer Docker desktop parcequ'on avait oublier, re-lancer : 
+
+```bash
+docker compose -f docker-compose-dev.yaml up
+```
+
+Aller sur `[http://localhost:3000](http://localhost:3000)`
+
+## Prod
+
+```bash
+docker compose -f docker-compose-prod.yaml up
+```
+
+# Attentes du cours
+
 ## La menace étudiée
 Exemple : suivi par cookie, tracking pixel, analyse des T&C.
 
 ## Les données observées
 Quelles données sont collectées ? À quel moment ? Par quel mécanisme ?
+Lors :
+- de la connection
+- du téléchargement
+  
 
 ## Les implications
 Qu’est-ce que ces données permettent de faire (Profilage ? Corrélation ? Suivi dans le temps ?) ?
