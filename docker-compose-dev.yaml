@@ -1,0 +1,12 @@
+services:
+  nextjs:
+    container_name: nextjs-dev
+    build:
+      context: ./8inf886_projet_1
+      dockerfile: Dockerfile-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./8inf886_projet_1:/app
+      - /app/node_modules
+      - /app/.next
