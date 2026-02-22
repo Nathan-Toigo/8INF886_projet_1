@@ -2,8 +2,8 @@ services:
   nextjs:
     container_name: nextjs-prod
     build:
-      context: ./8inf886_projet_1
-      dockerfile: Dockerfile-prod
+      context: ./
+      dockerfile: Dockerfile.prod
     restart: always
     ports:
       - "3000:3000"
