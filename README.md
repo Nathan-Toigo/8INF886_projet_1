@@ -13,7 +13,7 @@ Lancer Docker desktop parcequ'on avait oublier, re-lancer :
 docker compose -f docker-compose-dev.yaml up
 ```
 
-Aller sur `[http://localhost:3000](http://localhost:3000)`
+Aller sur [http://localhost:3000](http://localhost:3000)
 
 ## Prod
 
