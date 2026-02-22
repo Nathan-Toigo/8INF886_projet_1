@@ -24,23 +24,24 @@ docker compose -f docker-compose-prod.yaml up
 # Attentes du cours
 
 ## La menace étudiée
-Exemple : suivi par cookie, tracking pixel, analyse des T&C.
+**Exemple : suivi par cookie, tracking pixel, analyse des T&C.**
 
 ## Les données observées
-Quelles données sont collectées ? À quel moment ? Par quel mécanisme ?
+**Quelles données sont collectées ? À quel moment ? Par quel mécanisme ?**
+
 Lors :
 - de la connection
-- du téléchargement
+- du téléchargement de fortnite 2
   
 
 ## Les implications
-Qu’est-ce que ces données permettent de faire (Profilage ? Corrélation ? Suivi dans le temps ?) ?
+**Qu’est-ce que ces données permettent de faire (Profilage ? Corrélation ? Suivi dans le temps ?) ?**
 
 ## Les limites de votre démonstration
-Ce que votre application ne montre pas ou simplifie.
+**Ce que votre application ne montre pas ou simplifie.**
 
 ## Jeu de tests / scénarios reproductibles
-Vous devez fournir des scénarios clairs que quelqu’un d’autre peut reproduire.
+**Vous devez fournir des scénarios clairs que quelqu’un d’autre peut reproduire.**
 Exemple :
 1. Ouvrir la page.
 2. Cliquer sur « Refuser les cookies ».
@@ -50,4 +51,4 @@ Exemple :
 6. Cliquer sur un bouton « Comparer »
 7. Comparer les scénarios.
 
-Ces scénarios doivent montrer des différences observables
+**Ces scénarios doivent montrer des différences observables**
