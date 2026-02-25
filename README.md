@@ -4,13 +4,8 @@
 
 Aller a la racine du projet, lancer :
 ```bash
-docker compose -f docker-compose-dev.yaml up
-```
-
-Lancer Docker desktop parce qu'on avait oublié, re-lancer : 
-
-```bash
-docker compose -f docker-compose-dev.yaml up
+wsl
+make up-dev-build
 ```
 
 Aller sur [http://localhost:3000](http://localhost:3000)
