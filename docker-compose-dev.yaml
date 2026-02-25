@@ -1,17 +1,43 @@
 services:
   nextjs:
+    container_name: 8inf886_projet_1-web
     build:
       context: ./
       dockerfile: Dockerfile.dev
     working_dir: /app
     restart: always
     ports:
-      - "3000:3000"
+      - ${WEB_PORT}:3000
     environment:
       - WATCHPACK_POLLING=true
       - CHOKIDAR_USEPOLLING=true
       - FAST_REFRESH=true
+
+      - NODE_ENV=development
+      - AUTH_SECRET=${AUTH_SECRET}
+      - SECRET_COOKIE_PASSWORD=${SECRET_COOKIE_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_PORT=${DB_PORT}
     volumes:
       - ./8inf886_projet_1:/app
       - /app/node_modules
       - /app/.next
+
+  mysql:
+    container_name: 8inf886_projet_1-db
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    ports:
+      - ${DB_PORT}:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
+    driver: local

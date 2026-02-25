@@ -1,17 +1,18 @@
-# Use official Node.js image as the base image
-FROM node:22-alpine
+# Development image
+FROM node:22
 
-# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Install dependencies
 COPY ./8inf886_projet_1/package*.json ./
 
-# Install dependencies
-RUN npm install
+RUN npm i
 
-# Expose port
+# Copy source
+ADD ./8inf886_projet_1 .
+
+# Expose dev server port
 EXPOSE 3000
 
-# Start the Next.js app
+# Start Next.js in development mode
 CMD ["npm", "run", "dev"]
