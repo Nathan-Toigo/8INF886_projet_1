@@ -33,18 +33,6 @@ export async function POST(request: Request) {
   }
 
   try {
-    if (dedupedActions.has(actionName)) {
-      const key = `${userId}:${actionName}`;
-      const now = Date.now();
-      const last = recentActions.get(key);
-
-      if (last && now - last < RECENT_ACTION_WINDOW_MS) {
-        return NextResponse.json({ ok: true, deduped: true });
-      }
-
-      recentActions.set(key, now);
-    }
-
     await logUserAction(userId, actionName);
     return NextResponse.json({ ok: true });
   } catch (error) {
