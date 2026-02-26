@@ -28,16 +28,14 @@ services:
 
   mysql:
     container_name: 8inf886_projet_1-db
-    image: mysql:8.0
+    build:
+      context: ./
+      dockerfile: Dockerfile.mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
     ports:
       - ${DB_PORT}:3306
-    volumes:
-      - mysql_data:/var/lib/mysql
 
-volumes:
-  mysql_data:
-    driver: local
+

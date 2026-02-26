@@ -1,10 +1,20 @@
 "use client";
 
+import { useEffect } from "react";
 import { useWindowSize } from "@uidotdev/usehooks";
+import { ACTION_TYPES } from "@/lib/action-types";
 
   
 export default function Home() {
   const size = useWindowSize() as { width: number; height: number };
+
+  useEffect(() => {
+    void fetch("/api/log-action", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ actionName: ACTION_TYPES.GO_TO_HOME }),
+    });
+  }, []);
   
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">

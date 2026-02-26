@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -13,6 +13,7 @@ import {
 } from "@heroui/react";
 import "./logoutButton";
 import LogoutButton from "./logoutButton";
+import { getUserName } from "@/lib/session";
 
 export const Logo = () => {
   return (
@@ -24,18 +25,19 @@ export const Logo = () => {
   );
 };
 
-const handleLogout = async () => {
-  const res = await fetch("/api/logout", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-  });
-  if (res.ok) {
-    window.location.href = "/";
-  }
-};
 
 export default function NavbarComponent() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [username, setUsername] = useState<string | null>(null);
+
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      const name = await getUserName();
+      setUsername(name);
+    };
+    fetchUsername();
+  }, []);
 
   const menuItems = [
     "Chat",
@@ -75,6 +77,14 @@ export default function NavbarComponent() {
       </NavbarContent>
 
       <NavbarContent justify="end">
+        <div className="hidden sm:flex items-center gap-2">
+
+          <p className="text-sm"> Connecté en tant que 
+            <p className="text-center" style={{ color: '#FFFF00' }}>
+              {username}
+            </p>
+          </p>
+        </div>
         {menuItems.slice(-1).map((item, index) => (
           <NavbarItem key={`${item}-${index}`}>{
             <LogoutButton />

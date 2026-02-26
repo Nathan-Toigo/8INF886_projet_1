@@ -1,8 +1,5 @@
-import { getIronSession, IronSession, SessionOptions } from "iron-session";
-import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+import { SessionOptions } from "iron-session";
 
-// 1. Define the shape of your session data
 export interface SessionData {
   userId?: string;
   username?: string;
@@ -16,3 +13,15 @@ export const sessionOptions: SessionOptions = {
     secure: process.env.NODE_ENV === "production",
   },
 };
+
+export const getUserName = async (): Promise<string | null> => {
+  const res = await fetch("/api/getUser", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+  });
+  let username: string | null = null;
+  if (res.ok) {
+    username = (await res.json()).username;
+  }
+  return await username;
+}
