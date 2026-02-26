@@ -86,15 +86,3 @@ FROM
    natural join users
 ORDER BY
    logs.date DESC;
-
-SELECT
-   actions.name,
-   logs.date
-FROM
-   logs
-   natural join actions
-   natural join users
-WHERE
-   users.username = 'test'
-ORDER BY
-   logs.date DESC; --test user logs
