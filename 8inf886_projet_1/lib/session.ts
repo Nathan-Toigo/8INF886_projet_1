@@ -10,7 +10,7 @@ export const sessionOptions: SessionOptions = {
   password: process.env.SECRET_COOKIE_PASSWORD as string,
   cookieName: "app_session",
   cookieOptions: {
-    secure: process.env.NODE_ENV === "production",
+    secure: false, // So it works with http (hosted without domain with coolify)
   },
 };
 
