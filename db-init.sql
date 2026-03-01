@@ -10,7 +10,7 @@ INSERT INTO
    users (username, password)
 VALUES
    (
-      'test',
+      'baba',
       '$2a$12$If.fKyi3KCmTzZnh6optqeq4IKRlkKPgq3mkLfhTpU8t9ZIVYNn3W'
    );
 
@@ -18,6 +18,6 @@ INSERT INTO
    users (username, password)
 VALUES
    (
-      'arno',
-      '$2a$12$I6rF7zPwTQ8dnQvHCzUE0OVve.LsLYwi19t59BX7HbwS1Hk5JNVR2'
+      'toto',
+      '$2a$12$3TRlwrJRKUDmnGu7NH4wV.c7tZEl7H1EIdMCe6eVmO4nbQOLQYvnG'
    );
