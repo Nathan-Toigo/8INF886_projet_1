@@ -3,17 +3,18 @@
 import { useEffect } from "react";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { ACTION_TYPES } from "@/lib/action-types";
+import { logLocalAction } from "@/lib/local-action-log";
+import { getUserName } from "@/lib/session";
 
   
 export default function Home() {
   const size = useWindowSize() as { width: number; height: number };
 
   useEffect(() => {
-    void fetch("/api/log-action", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ actionName: ACTION_TYPES.GO_TO_HOME }),
-    });
+    void (async () => {
+      const username = await getUserName();
+      await logLocalAction(ACTION_TYPES.GO_TO_HOME, username ?? undefined);
+    })();
   }, []);
   
   return (

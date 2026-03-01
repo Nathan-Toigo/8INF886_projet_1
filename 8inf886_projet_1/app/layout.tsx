@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./styles/globals.css";
 import { Providers } from "./providers";
+import CookieConsentBanner from "./components/cookieConsentBanner";
 
 export const metadata: Metadata = {
   title: "Super Web Projet !",
@@ -16,6 +17,7 @@ export default function RootLayout({
       <body>
         <Providers>
           {children}
+          <CookieConsentBanner />
         </Providers>
       </body>
     </html>

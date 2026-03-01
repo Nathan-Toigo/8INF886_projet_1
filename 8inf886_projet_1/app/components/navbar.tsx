@@ -42,8 +42,16 @@ export default function NavbarComponent() {
   const menuItems = [
     "Chat",
     "Settings",
+    "Logs",
     "Log Out",
   ];
+
+  const getItemHref = (item: string) => {
+    if (item === "Chat") return "/chat";
+    if (item === "Settings") return "/settings";
+    if (item === "Logs") return "/logs";
+    return "#";
+  };
 
   return (
     <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
@@ -65,10 +73,7 @@ export default function NavbarComponent() {
           <NavbarItem key={`${item}-${index}`}>
             <Link
               color="foreground"
-              href={
-                item === "Chat" ? "/chat"
-                  : item === "Settings" ? "/settings"
-                    : "#"}
+              href={getItemHref(item)}
             >
               {item}
             </Link>
@@ -101,10 +106,7 @@ export default function NavbarComponent() {
               color={
                 index === menuItems.length - 1 ? "danger" : "foreground"
               }
-              href={
-                item === "Chat" ? "/chat"
-                  : item === "Settings" ? "/settings"
-                    : "#"}
+              href={getItemHref(item)}
               size="lg"
             >
               {item}

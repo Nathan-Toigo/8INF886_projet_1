@@ -2,6 +2,8 @@
 
 import { use, useState } from "react";
 import { useRouter } from "next/navigation";
+import { ACTION_TYPES } from "@/lib/action-types";
+import { logLocalAction } from "@/lib/local-action-log";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -20,6 +22,7 @@ export default function LoginPage() {
     });
 
     if (res.ok) {
+      void logLocalAction(ACTION_TYPES.LOGIN, username);
       router.push("/home");
       router.refresh();
     } else {

@@ -2,14 +2,15 @@
 
 import { useEffect } from "react";
 import { ACTION_TYPES } from "@/lib/action-types";
+import { logLocalAction } from "@/lib/local-action-log";
+import { getUserName } from "@/lib/session";
 
 export default function Chat() {
     useEffect(() => {
-        void fetch("/api/log-action", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ actionName: ACTION_TYPES.GO_TO_CHAT }),
-        });
+        void (async () => {
+            const username = await getUserName();
+            await logLocalAction(ACTION_TYPES.GO_TO_CHAT, username ?? undefined);
+        })();
     }, []);
 
     return (

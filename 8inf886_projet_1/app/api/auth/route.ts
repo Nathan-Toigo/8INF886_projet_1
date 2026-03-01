@@ -3,8 +3,6 @@ import { SessionData, sessionOptions } from "@/lib/session";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { pool } from "@/lib/db";
-import { logUserAction } from "@/lib/action-log";
-import { ACTION_TYPES } from "@/lib/action-types";
 import bcrypt from 'bcrypt'; // Highly recommended for password checking
 
 export async function POST(request: NextRequest) {
@@ -25,12 +23,6 @@ export async function POST(request: NextRequest) {
       session.isLoggedIn = true;
 
       await session.save();
-
-      try {
-        await logUserAction(user.id_users, ACTION_TYPES.LOGIN);
-      } catch (logError) {
-        console.error("Failed to log login action", logError);
-      }
 
       return NextResponse.json({ ok: true });
     }

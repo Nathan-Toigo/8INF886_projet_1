@@ -2,9 +2,9 @@ up-dev:
 	docker compose -f docker-compose-dev.yaml up
 
 up-prod:
-	docker rm 8inf886_projet_1-web
-	docker rm 8inf886_projet_1-db
-	docker rmi 8inf886_projet_1-nextjs
+	-docker rm 8inf886_projet_1-web
+	-docker rm 8inf886_projet_1-db
+	-docker rmi 8inf886_projet_1-nextjs
 	docker compose -f docker-compose-prod.yaml up --build
 
 up-dev-build:
